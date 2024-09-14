@@ -73,4 +73,3 @@ To contribute to the project:
     ```
 5. **Submit a Pull Request** with a description of the changes.
 
-Feel free to explore and contribute to make the project better!

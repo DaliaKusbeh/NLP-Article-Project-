@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP Article Analyzer</title>
+    <script defer src="bundle.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <h1>NLP Article Analyzer</h1>
+    </header>
+    <main>
+        <section class="form-container">
+            <form id="myForm" method="post" onsubmit="return Client.handleSubmit(event)">
+                <label for="URL">Article URL:</label>
+                <input id="URL" name="URL" type="url" placeholder="https://example.com">
+                <button type="submit">Analyze</button>
+            </form>
+        </section>
+        <div id="error" class="error-message"></div>
+        <section id="results" class="results-section">
+            <h2>Analysis Results</h2>
+            <div id="loader" class="loader"></div>
+            <ul>
+                <li><strong>Agreement:</strong> <span id="agreement"></span></li>
+                <li><strong>Subjectivity:</strong> <span id="subjectivity"></span></li>
+                <li><strong>Confidence:</strong> <span id="confidence"></span></li>
+                <li><strong>Irony:</strong> <span id="irony"></span></li>
+                <li><strong>Polarity:</strong> <span id="score_tag"></span></li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 NLP Article Analyzer</p>
+    </footer>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

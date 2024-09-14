@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP Article Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>NLP Article Analyzer</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <form id="myForm" method="post" onsubmit="return Client.handleSubmit(event)">
+                <label for="URL">Enter an Article URL:</label>
+                <input type="text" id="URL" name="URL" />
+                <button type="submit" value="Analyze">Analyze</button>
+            </form>
+        </div>
+
+        <div id="error" class="error-message" style="display: none;"></div>
+        
+        <section id="analysisResults">
+            <h2>Results</h2>
+            <div id="loadingSpinner" class="loading-spinner" style="display: none;"></div>
+            <ul>
+                <li><strong>Agreement:</strong> <span id="agreementResult"></span></li>
+                <li><strong>Subjectivity:</strong> <span id="subjectivityResult"></span></li>
+                <li><strong>Confidence:</strong> <span id="confidenceResult"></span></li>
+                <li><strong>Irony:</strong> <span id="ironyResult"></span></li>
+                <li><strong>Polarity:</strong> <span id="polarityResult"></span></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NLP Article Analyzer</p>
+    </footer>
+
+    <script src="index.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>
